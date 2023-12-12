@@ -1,0 +1,62 @@
+import React, { useState } from 'react'
+import logo from "/public/img/login_image.png"
+
+export default function Register() {
+  const [logoName, setLogoName] = useState("Doot")
+
+  return (
+    <div className='login fade_load'>
+    <div className="d-flex content">
+        <div className="logo">
+            <h2 className='fw-bold text-white'>{logoName}</h2>
+            <p className="text-muted">Responsive Bootstrap 5 Chat App</p>
+            <div className="img">
+                <img src={logo} alt="" />
+            </div>
+        </div>
+
+        <div className="form">
+            <h2 className='text-center'>Register Account</h2>
+            <p className="muted text-center mb-5">Get your free {logoName} account now.</p>
+
+            <form action="">
+                <div className="input">
+                    <label htmlFor="">Email</label>
+                    <input type="email" placeholder='Enter email' />
+                </div>
+
+                <div className="input">
+                    <label htmlFor="">Username</label>
+                    <input type="text" placeholder='Enter your username' />
+                </div>
+
+                <div className="input">
+                    <div className="d-flex forgot">
+                        <label htmlFor="">Password</label>
+                    </div>
+                    <input type="password" placeholder='Password' />
+                </div>
+
+                <p className="text-center terms mb-4">By registering you agree to the {logoName} <span>Terms of Use</span></p>
+
+                <button className='btn btn-success'>Register</button>
+
+                <div className="d-flex even with">
+                    <div className="line"></div>
+                    <p className="mb-0 mx-2 mt-0">Continue in with</p>
+                    <div className="line"></div>
+                </div>
+
+                <div className="d-flex even social">
+                    <p className="">facebook</p>
+                    <p className="">facebook</p>
+                </div>
+
+                <p className="text-center muted mt-4">Already have an account ? <a href="/login">Login</a></p>
+                <p className="text-center muted">© 2023 {logoName}. Crafted by <strong>Muhammadjamiu</strong></p>
+            </form>
+        </div>
+    </div>
+</div>
+  )
+}

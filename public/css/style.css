@@ -1,0 +1,165 @@
+:root{
+    --primary:  #4eac6d;
+}
+
+.fade_load{
+    animation: fade-in .5s;
+}
+
+@keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 100;
+    }
+}
+
+body{
+    background-color: var(--primary);
+}
+
+.login .logo{
+    padding: 4em;
+}
+
+.login{
+    background-color: var(--primary);
+    width: 100%;
+    font-size: 16px;
+}
+
+.login .content{
+    justify-content: space-between;
+}
+
+.login img{
+    width: 400px;
+    height: 400px;
+    position: absolute;
+}
+
+.login .form{
+    background-color: azure;
+    width: 60%;
+    padding: 2em 7em;
+    margin-right: 4em;
+}
+
+.login .form .even{
+    justify-content: space-evenly;
+}
+
+.login label{
+    display: block;
+    margin-bottom: .3em;
+    margin-left: 3.5em;
+    color: grey;
+    font-size: 14px;
+}
+
+.login input[type="text"],.login input[type="password"], .login input[type="email"]{
+    width: 80%;
+    margin-bottom: 1em;
+    padding: 1em;
+    border: none;
+    box-shadow: .1em .1em 1em rgba(0, 0, 0, 0.073);
+    border-radius: 6px;
+    margin-left: 3em;
+    outline: none;
+    font-size: 14px;
+}
+
+.login input::placeholder{
+    color: rgb(179, 177, 177);
+}
+
+.login button{
+    width: 80%;
+    margin-bottom: 1em;
+    padding: 1em;
+    border-radius: 6px;
+    margin-left: 3em;
+    background-color: var(--primary);
+    color: azure;
+}
+
+.login .rem{
+    margin-left: 3.5em;
+    margin-bottom: 1em;
+    color: rgb(167, 166, 166);
+    font-size: 14px;
+}
+
+.login .rem a{
+    text-decoration: none;
+    color:var(--primary);
+}
+
+.login .with{
+    color: grey;
+    margin-top: 1em;
+}
+
+.login .social p{
+    background-color: rgba(236, 236, 236, 0.516);
+    padding: .8em 4em;
+    border-radius: 3px;
+    margin: 1em;
+    margin-top: 2em;
+}
+
+.login form strong, .login form a{
+    text-decoration: none;
+    color: var(--primary);
+}
+
+.login .muted{
+    color: grey;
+    font-size: 14px;
+}
+
+.login form .terms{
+    color: rgb(158, 158, 158);
+    font-size: 14px;
+}
+
+.login form .terms span{
+    color: var(--primary);
+}
+
+@media screen and (max-width: 950px){
+    .login .logo{
+        display: none;
+    }
+
+    .login .form{
+        margin: auto auto;
+        padding: 2em 1em;
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .login .form{
+        padding: 2em 1.5em;
+        width: 95%;
+    }
+
+    .login label{
+        margin-left: 0em;
+    }
+    
+    .login input[type="text"],.login input[type="password"], .login input[type="email"]{
+        width: 100%;
+        margin-left: 0em;
+    }
+
+    .login .social p {
+        padding: .5em 1em;
+    }
+
+    .login .form{
+        /* height: 100%; */
+    }
+}
