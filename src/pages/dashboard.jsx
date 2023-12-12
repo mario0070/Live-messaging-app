@@ -223,8 +223,30 @@ export default function Dashboard() {
                                                   </div>
                                                 </div>
                                                 <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
-                                                    <div class="card-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                                    <div class="card-body information">
+                                                        <div className="d-flex mb-0">
+                                                            <div className="">
+                                                                <p className="mb-1">Name</p>
+                                                                <p className="fw-semibold">Ganiu jamiu</p>
+                                                            </div>
+                                                            <div className="edit">
+                                                                <p className="mb-0 btn"><i class="fa-solid text-white fa-pen"></i></p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="d-flex mb-0">
+                                                            <div className="">
+                                                                <p className="mb-1">Email</p>
+                                                                <p className="fw-semibold">ganiujamiu03@gmail.com</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="d-flex mb-0">
+                                                            <div className="">
+                                                                <p className="mb-1">Location</p>
+                                                                <p className="fw-semibold">lagos island</p>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -244,8 +266,39 @@ export default function Dashboard() {
                                                    </div>
                                                 </div>
                                                 <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
-                                                    <div class="card-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                                    <div class="card-body collapseTwo">
+                                                        <div className="d-flex">
+                                                            <p className="mb-0">Profile photo</p>
+                                                            <select name="" id="">
+                                                                <option value="">Everyone</option>
+                                                                <option value="">Nobody</option>
+                                                                <option value="">Selected</option>
+                                                            </select>
+                                                        </div>
+                                                        <div className="d-flex">
+                                                            <p className="mb-0">Last seen</p>
+                                                            <p className="mb-0"><i class="fa-solid fa-toggle-on"></i></p>
+                                                        </div>
+                                                        <div className="d-flex">
+                                                            <p className="mb-0">Status</p>
+                                                            <select name="" id="">
+                                                                <option value="">Everyone</option>
+                                                                <option value="">Nobody</option>
+                                                                <option value="">Selected</option>
+                                                            </select>
+                                                        </div>
+                                                        <div className="d-flex">
+                                                            <p className="mb-0">Read receipts</p>
+                                                            <p className="mb-0"><i class="fa-solid fa-toggle-on"></i></p>
+                                                        </div>
+                                                        <div className="d-flex">
+                                                            <p className="mb-0">Groups</p>
+                                                            <select name="" id="">
+                                                                <option value="">Nobody</option>
+                                                                <option value="">Everyone</option>
+                                                                <option value="">Selected</option>
+                                                            </select>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
