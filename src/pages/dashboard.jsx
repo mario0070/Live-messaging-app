@@ -361,11 +361,11 @@ export default function Dashboard() {
                                 <p className='time text-end mx-3'>10:16 am</p>
                             </div>
 
-                            <div className="wrap1 ai">
+                            {/* <div className="wrap1 ai">
                                 <div className="mx-4 mt-5">
                                     <img src={typing} alt="" className='typing' />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="inputs">
