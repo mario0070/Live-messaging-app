@@ -525,6 +525,6 @@
 
 .dashboard .show_container{
     width: 100%;
-    display: inline;
+    display: block;
     opacity: 1.0;
 }
