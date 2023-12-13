@@ -439,10 +439,71 @@
 
 @media screen and (max-width: 650px){
     .dashboard .chat_container{
-        display: none;
+        width: 0%;
+        overflow: hidden;
+        opacity: 0.0;
+    }
+
+    .chat_container .wrap1{
+        margin-right: 0;
+    }
+
+    .chat_container .wrap2{
+        margin-left: 0;
     }
 
     .dashboard .users{
         width: 90%;
     }
+
+    .chat_container .msgIcon img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .dashboard .chat_container .head .icons{
+        display: none !important;
+    }
+
+    .chat_container .fa-arrow-left{
+        display: inline !important;
+        margin-right: 1em;
+        transform: translateY(10px);
+    }
+}
+
+@media screen and (min-width: 375px){
+    .dashboard .chat_container .msg_body{
+        height: 82vh;
+    }
+}
+
+@media screen and (min-width: 390px){
+    .dashboard .chat_container .msg_body{
+        height: 84vh;
+    }
+}
+
+@media screen and (min-width: 412px){
+    .dashboard .chat_container .msg_body{
+        height: 85vh;
+    }
+}
+
+@media screen and (min-width: 1012px){
+    .dashboard .chat_container .msg_body{
+        height: 80vh;
+    }
+}
+
+.dashboard .hide_user{
+    width: 0%;
+    overflow: hidden;
+    opacity: 0.0;
+}
+
+.dashboard .show_container{
+    width: 100%;
+    display: inline;
+    opacity: 1.0;
 }

@@ -121,6 +121,13 @@ export default function Dashboard() {
           });
     }
 
+    const slideNav = () => {
+        var chat_container = document.querySelector(".chat_container")
+        var users = document.querySelector(".users")
+        users.classList.toggle("hide_user");
+        chat_container.classList.toggle("show_container");
+    }
+
     return (
         <div className='dashboard fade_load'>
             <div className="all_contents">
@@ -142,7 +149,7 @@ export default function Dashboard() {
                         <>
                             <div className="head">
                                     <div className="d-flex">
-                                        <h2 className="fw-bold">Chats</h2>
+                                        <h2 onClick={slideNav} className="fw-bold">Chats</h2>
                                         <p className="mb-0"><i className="fa-solid fa-plus"></i></p>
                                     </div>
                             </div>
@@ -443,6 +450,7 @@ export default function Dashboard() {
                     <div className="chat_container">
                         <div className="head d-flex">
                             <div className="username d-flex">
+                                <i className="fa-solid fa-arrow-left d-none" onClick={slideNav}></i>
                                 <p className="mb-0 pt-2 fw-bold profile_pic">GJ</p>
                                 <div className="mx-2">
                                     <p className="names fw-bold mb-1">Ganiu jamiu</p>
