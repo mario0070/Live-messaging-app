@@ -488,7 +488,7 @@
     }
 }
 
-@media screen and (min-width: 375px){
+/* @media screen and (min-width: 375px){
     .dashboard .chat_container .msg_body{
         height: 80vh;
     }
@@ -510,7 +510,7 @@
     .dashboard .chat_container .msg_body{
         height: 80vh;
     }
-}
+} */
 
 .dashboard .hide_user{
     width: 0%;
