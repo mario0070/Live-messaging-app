@@ -422,9 +422,76 @@
     border: 1px solid transparent !important;
 }
 
+@media screen and (max-width: 700px){
+    .navigation {
+        display: none;
+    }
 
+    
+    .dashboard .chat_container .msg_body{
+        height: 70vh;
+    }
 
+    .dashboard .chat_container{
+        width: 70%;
+    }
 
+    .dashboard .hamburger{
+        display: inline !important;
+        color: grey;
+        font-size: 2em;
+        transform: translateY(-10px);
+    }
+
+    .dashboard .hamburger:hover{
+        cursor: pointer;
+        color: var(--primary);
+    }
+
+    .dashboard .addChat{
+        display: none;
+    }
+
+    .dashboard .users{
+        width: 30%;
+        padding: 1em 0em;
+    }
+}
+
+@media screen and (max-width: 650px){
+    .dashboard .chat_container{
+        width: 0%;
+        overflow: hidden;
+        opacity: 0.0;
+    }
+
+    .chat_container .wrap1{
+        margin-right: 0;
+    }
+
+    .chat_container .wrap2{
+        margin-left: 0;
+    }
+
+    .dashboard .users{
+        width: 90%;
+    }
+
+    .chat_container .msgIcon img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .dashboard .chat_container .head .icons{
+        display: none !important;
+    }
+
+    .chat_container .fa-arrow-left{
+        display: inline !important;
+        margin-right: 1em;
+        transform: translateY(10px);
+    }
+}
 
 /* @media screen and (min-width: 375px){
     .dashboard .chat_container .msg_body{
@@ -450,7 +517,7 @@
     }
 } */
 
-/* .dashboard .hide_user{
+.dashboard .hide_user{
     width: 0%;
     overflow: hidden;
     opacity: 0.0;
@@ -460,4 +527,4 @@
     width: 100%;
     display: block;
     opacity: 1.0;
-} */
+}
