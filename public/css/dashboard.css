@@ -159,7 +159,10 @@
 .dashboard .chat_container .inputs{
     background-color: rgba(255, 255, 255, 0.265);
     padding: .5em;
-    padding-bottom: 100em;
+    /* padding-bottom: 100em; */
+    width: 70%;
+    position: fixed;
+    bottom: 0;
 }
 
 .dashboard .chat_container .inputs textarea{
@@ -191,6 +194,9 @@
     overflow: scroll;
     padding: 1em;
     padding-bottom: 4em;
+}
+
+.testing{
 }
 
 .dashboard .chat_container .msg_body .time{
@@ -423,6 +429,10 @@
 }
 
 @media screen and (max-width: 700px){
+    .dashboard .chat_container .inputs{
+        width: 100% ;
+    }
+
     .navigation {
         display: none;
     }
@@ -490,6 +500,10 @@
         display: inline !important;
         margin-right: 1em;
         transform: translateY(10px);
+    }
+
+    .dashboard .chat_container .inputs{
+        width: 100%;
     }
 }
 
