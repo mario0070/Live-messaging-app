@@ -39,7 +39,7 @@ export default function Dashboard() {
                 <p class="mb-0 p-2">${msg.current.value}</p>
             </div>
           </div>
-          <p class='time text-end mx-3'>${hrs}:${fulltime >= 12  ? mins +" pm" : mins + " am"}</p>
+          <p class='time text-end mx-3'><i class="fa-regular fa-clock"></i> ${hrs}:${fulltime >= 12  ? mins +" pm" : mins + " am"}</p>
         </div>`)
         $(".msg_body").scrollTop($(".msg_body").height()*200);
         msg.current.value = ""
@@ -54,7 +54,7 @@ export default function Dashboard() {
                     <div class="msgBodys mb-0 mt-0">
                         <p class='mb-0 p-2'>Hello baddo, we are not available at the moment, please try again later !!</p>
                     </div>
-                    <p class='time text-start mx-3'>${hrs}:${fulltime >= 12  ? mins +" pm" : mins + " am"}</p>
+                    <p class='time text-start mx-3'><i class="fa-regular fa-clock"></i> ${hrs}:${fulltime >= 12  ? mins +" pm" : mins + " am"}</p>
                 </div>
             </div> `)
             $(".msg_body").scrollTop($(".msg_body").height()*200);
@@ -72,13 +72,13 @@ export default function Dashboard() {
                 <div className="d-flex">
 
                     <div className="navigation text-center nav-tabs" role="tablist">
-                        <a data-bs-toggle="tab" className='active' title='messages' href='#chat' onClick={() => switchTab("chat")}><i class="fa-solid fa-message"></i></a>
-                        <a data-bs-toggle="tab" title='chats' href='#chat' onClick={() => switchTab("chat")}><i class="fa-solid fa-comments"></i></a>
-                        <a data-bs-toggle="tab" title='settings' href='#settings' onClick={() => switchTab("settings")}><i class="fa-solid fa-gear"></i></a>
-                        <a data-bs-toggle="tab" title='profile' href='#profile' onClick={() => switchTab("profile")}><i class="fa-solid fa-user"></i></a>
-                        <a data-bs-toggle="tab" title='contact' href='#contact' onClick={() => switchTab("contact")}><i class="fa-solid fa-address-book"></i></a>
-                        <a data-bs-toggle="tab" title='calls' href='#calls' onClick={() => switchTab("calls")}><i class="fa-solid fa-phone"></i></a>
-                        <p><a title='logout' href="#logout"><i class="fa-solid fa-right-from-bracket"></i></a></p>
+                        <a data-bs-toggle="tab" className='active' title='messages' href='#chat' onClick={() => switchTab("chat")}><i className="fa-solid fa-message"></i></a>
+                        <a data-bs-toggle="tab" title='chats' href='#chat' onClick={() => switchTab("chat")}><i className="fa-solid fa-comments"></i></a>
+                        <a data-bs-toggle="tab" title='settings' href='#settings' onClick={() => switchTab("settings")}><i className="fa-solid fa-gear"></i></a>
+                        <a data-bs-toggle="tab" title='profile' href='#profile' onClick={() => switchTab("profile")}><i className="fa-solid fa-user"></i></a>
+                        <a data-bs-toggle="tab" title='contact' href='#contact' onClick={() => switchTab("contact")}><i className="fa-solid fa-address-book"></i></a>
+                        <a data-bs-toggle="tab" title='calls' href='#calls' onClick={() => switchTab("calls")}><i className="fa-solid fa-phone"></i></a>
+                        <p><a title='logout' href="#logout"><i className="fa-solid fa-right-from-bracket"></i></a></p>
                     </div>
 
                     <div className="users">
@@ -88,7 +88,7 @@ export default function Dashboard() {
                             <div className="head">
                                     <div className="d-flex">
                                         <h2 className="fw-bold">Chats</h2>
-                                        <p className="mb-0"><i class="fa-solid fa-plus"></i></p>
+                                        <p className="mb-0"><i className="fa-solid fa-plus"></i></p>
                                     </div>
                             </div>
 
@@ -187,17 +187,17 @@ export default function Dashboard() {
                                         <div className="p-3 scroll">
                                             <p className="text-muted">If several languages coalesce, the grammar of the resulting language is more simple.</p>
                                             <div className="d-flex">
-                                                <p className="mb-0"><i class="fa-solid fa-user"></i></p>
+                                                <p className="mb-0"><i className="fa-solid fa-user"></i></p>
                                                 <p className="mb-0 mx-2">Ganiu jamiu</p>
                                             </div>
 
                                             <div className="d-flex">
-                                                <p className="mb-0"><i class="fa-solid fa-inbox"></i></p>
+                                                <p className="mb-0"><i className="fa-solid fa-inbox"></i></p>
                                                 <p className="mb-0 mx-2">ganiujamiu@gmail.com</p>
                                             </div>
 
                                             <div className="d-flex">
-                                                <p className="mb-0"><i class="fa-solid fa-location"></i></p>
+                                                <p className="mb-0"><i className="fa-solid fa-location"></i></p>
                                                 <p className="mb-0 mx-2">Location</p>
                                             </div>
                                         </div>
@@ -219,29 +219,29 @@ export default function Dashboard() {
                                     </div>
                                     <div className="py-3 scroll">
                                         <div id="accordion">
-                                            <div class="card">
-                                                <div class="card-header"  data-bs-toggle="collapse" href="#collapseOne">
+                                            <div className="card">
+                                                <div className="card-header"  data-bs-toggle="collapse" href="#collapseOne">
                                                   <div className="d-flex">
                                                        <div className="">
-                                                            <i class="fa-solid fa-user"></i>
-                                                            <a class="">
+                                                            <i className="fa-solid fa-user"></i>
+                                                            <a className="">
                                                             Personal Information
                                                             </a>
                                                        </div>
                                                         <div>
-                                                        <i class="fa-solid fa-arrow-down-wide-short"></i>
+                                                        <i className="fa-solid fa-arrow-down-wide-short"></i>
                                                         </div>
                                                   </div>
                                                 </div>
-                                                <div id="collapseOne" class="collapse show" data-bs-parent="#accordion">
-                                                    <div class="card-body information">
+                                                <div id="collapseOne" className="collapse show" data-bs-parent="#accordion">
+                                                    <div className="card-body information">
                                                         <div className="d-flex mb-0">
                                                             <div className="">
                                                                 <p className="mb-1">Name</p>
                                                                 <p className="fw-semibold">Ganiu jamiu</p>
                                                             </div>
                                                             <div className="edit">
-                                                                <p className="mb-0 btn"><i class="fa-solid text-white fa-pen"></i></p>
+                                                                <p className="mb-0 btn"><i className="fa-solid text-white fa-pen"></i></p>
                                                             </div>
                                                         </div>
 
@@ -262,22 +262,22 @@ export default function Dashboard() {
                                                 </div>
                                             </div>
 
-                                            <div class="card">
-                                                <div class="card-header"  data-bs-toggle="collapse" href="#collapseTwo">
+                                            <div className="card">
+                                                <div className="card-header"  data-bs-toggle="collapse" href="#collapseTwo">
                                                    <div className="d-flex">
                                                         <div className="">
-                                                            <i class="fa-solid fa-lock"></i>
-                                                            <a class="collapsed">
+                                                            <i className="fa-solid fa-lock"></i>
+                                                            <a className="collapsed">
                                                             Privacy
                                                             </a>
                                                         </div>
                                                         <div className="">
-                                                            <i class="fa-solid fa-arrow-down-wide-short"></i>
+                                                            <i className="fa-solid fa-arrow-down-wide-short"></i>
                                                         </div>
                                                    </div>
                                                 </div>
-                                                <div id="collapseTwo" class="collapse" data-bs-parent="#accordion">
-                                                    <div class="card-body collapseTwo">
+                                                <div id="collapseTwo" className="collapse" data-bs-parent="#accordion">
+                                                    <div className="card-body collapseTwo">
                                                         <div className="d-flex">
                                                             <p className="mb-0">Profile photo</p>
                                                             <select name="" id="">
@@ -288,7 +288,7 @@ export default function Dashboard() {
                                                         </div>
                                                         <div className="d-flex">
                                                             <p className="mb-0">Last seen</p>
-                                                            <p className="mb-0"><i class="fa-solid fa-toggle-on"></i></p>
+                                                            <p className="mb-0"><i className="fa-solid fa-toggle-on"></i></p>
                                                         </div>
                                                         <div className="d-flex">
                                                             <p className="mb-0">Status</p>
@@ -300,7 +300,7 @@ export default function Dashboard() {
                                                         </div>
                                                         <div className="d-flex">
                                                             <p className="mb-0">Read receipts</p>
-                                                            <p className="mb-0"><i class="fa-solid fa-toggle-on"></i></p>
+                                                            <p className="mb-0"><i className="fa-solid fa-toggle-on"></i></p>
                                                         </div>
                                                         <div className="d-flex">
                                                             <p className="mb-0">Groups</p>
@@ -314,46 +314,46 @@ export default function Dashboard() {
                                                 </div>
                                             </div>
 
-                                            <div class="card">
-                                                <div class="card-header" data-bs-toggle="collapse" href="#collapseThree">
+                                            <div className="card">
+                                                <div className="card-header" data-bs-toggle="collapse" href="#collapseThree">
                                                    <div className="d-flex">
                                                         <div className="">
-                                                            <i class="fa-solid fa-shield-halved"></i>
-                                                            <a class="collapsed">
+                                                            <i className="fa-solid fa-shield-halved"></i>
+                                                            <a className="collapsed">
                                                             Security
                                                             </a>
                                                         </div>
                                                         <div className="">
-                                                            <i class="fa-solid fa-arrow-down-wide-short"></i>
+                                                            <i className="fa-solid fa-arrow-down-wide-short"></i>
                                                         </div>
                                                    </div>
                                                 </div>
-                                                <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
-                                                    <div class="card-body collapseThree">
+                                                <div id="collapseThree" className="collapse" data-bs-parent="#accordion">
+                                                    <div className="card-body collapseThree">
                                                         <div className="d-flex">
                                                             <p className="mb-0">Show security notification</p>
-                                                            <p className="mb-0"><i class="fa-solid fa-toggle-off"></i></p>
+                                                            <p className="mb-0"><i className="fa-solid fa-toggle-off"></i></p>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="card">
-                                                <div class="card-header"  data-bs-toggle="collapse" href="#collapseFour">
+                                            <div className="card">
+                                                <div className="card-header"  data-bs-toggle="collapse" href="#collapseFour">
                                                    <div className="d-flex">
                                                         <div className="">
-                                                            <i class="fa-solid fa-circle-info"></i>
-                                                            <a class="collapsed">
+                                                            <i className="fa-solid fa-circle-info"></i>
+                                                            <a className="collapsed">
                                                             Help
                                                             </a>
                                                         </div>
                                                         <div className="">
-                                                            <i class="fa-solid fa-arrow-down-wide-short"></i>
+                                                            <i className="fa-solid fa-arrow-down-wide-short"></i>
                                                         </div>
                                                    </div>
                                                 </div>
-                                                <div id="collapseFour" class="collapse" data-bs-parent="#accordion">
-                                                    <div class="card-body">
+                                                <div id="collapseFour" className="collapse" data-bs-parent="#accordion">
+                                                    <div className="card-body">
                                                     </div>
                                                 </div>
                                             </div>
@@ -393,41 +393,41 @@ export default function Dashboard() {
                                     <p className="names fw-bold mb-1">Ganiu jamiu</p>
                                     <div className="d-flex">
                                         <p className="mb-0">Online</p>
-                                        <p className="mb-0 mx-2">{hrs}:{fulltime >= 12  ? mins +" pm" : mins + " am"}</p>
+                                        <p className="mb-0 mx-2"><i className="fa-regular fa-clock top_clock"></i> {hrs}:{fulltime >= 12  ? mins +" pm" : mins + " am"}</p>
                                     </div>
                                 </div>
                             </div>
                             <div className="icons d-flex">
-                                <p data-bs-placement="bottom" data-bs-toggle="tooltip" title='search' className="mb-0"><i class="fa-solid fa-magnifying-glass"></i></p>
-                                <p data-bs-placement="bottom" data-bs-toggle="tooltip" title='voice call' className="mb-0"><i class="fa-solid fa-phone-volume"></i></p>
-                                <p data-bs-placement="bottom" data-bs-toggle="tooltip" title='video call' className="mb-0"><i class="fa-solid fa-video"></i></p>
-                                <p data-bs-placement="bottom" data-bs-toggle="tooltip" title='more info' className="mb-0"><i class="fa-solid fa-circle-info"></i></p>
+                                <p data-bs-placement="bottom" data-bs-toggle="tooltip" title='search' className="mb-0"><i className="fa-solid fa-magnifying-glass"></i></p>
+                                <p data-bs-placement="bottom" data-bs-toggle="tooltip" title='voice call' className="mb-0"><i className="fa-solid fa-phone-volume"></i></p>
+                                <p data-bs-placement="bottom" data-bs-toggle="tooltip" title='video call' className="mb-0"><i className="fa-solid fa-video"></i></p>
+                                <p data-bs-placement="bottom" data-bs-toggle="tooltip" title='more info' className="mb-0"><i className="fa-solid fa-circle-info"></i></p>
                             </div>
                         </div>
 
                         <div className="msg_body">
                             <div className="wrap1 unique pt-4">
                                 <div className="">
-                                    <p class='mb-0 msgIcon text-start mb-0'>
+                                    <p className='mb-0 msgIcon text-start mb-0'>
                                         <img src={logo} alt="img" className='' width={30} />
                                     </p>
                                     <div className="msgBodys mb-0 mt-0">
                                         <p className='mb-0 p-2'>Hello baddo, what questions do you have for me today? </p>
                                     </div>
-                                    <p className='time text-start mx-3'>10:16 am</p>
+                                    <p className='time text-start mx-3'><i className="fa-regular fa-clock"></i> 10:16 am</p>
                                 </div>
                             </div>       
 
-                            <div class="wrap2 mt-2">
-                                <p class='mb-0 msgIcon text-end mb-0'>
+                            <div className="wrap2 mt-2">
+                                <p className='mb-0 msgIcon text-end mb-0'>
                                     <img src={logo} alt="img" className='' width={30} />
                                 </p>
-                                <div class="sentMsg mb-0 mt-0">
-                                    <div class="myMsg">
-                                        <p class="mb-0 p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ad et mollitia labore doloribus eligendi pariatur! Deleniti sint iure accusantium ullam autem labore architecto praesentium expedita, eligendi, beatae alias fuga.</p>
+                                <div className="sentMsg mb-0 mt-0">
+                                    <div className="myMsg">
+                                        <p className="mb-0 p-2">Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias ad et mollitia labore doloribus eligendi pariatur! Deleniti sint iure accusantium ullam autem labore architecto praesentium expedita, eligendi, beatae alias fuga.</p>
                                     </div>
                                 </div>
-                                <p className='time text-end mx-3'>10:16 am</p>
+                                <p className='time text-end mx-3'><i className="fa-regular fa-clock"></i> 10:16 am</p>
                             </div>
 
                             {/* <div className="wrap1 ai">
@@ -440,7 +440,7 @@ export default function Dashboard() {
                         <div className="inputs">
                             <div className="d-flex">
                                 <textarea ref={msg} onChange={e => setMsgInput(e.target.value)} placeholder='Type your message.....'></textarea>
-                                <button onClick={sendMsg} className="btn">send message <i class="fa-solid fa-paper-plane"></i></button>
+                                <button onClick={sendMsg} className="btn">send message <i className="fa-solid fa-paper-plane"></i></button>
                             </div>
                         </div>
 

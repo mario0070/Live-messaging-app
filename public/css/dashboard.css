@@ -229,6 +229,10 @@
     white-space-collapse:break-spaces;
 }
 
+.chat_container .top_clock{
+    font-size: 1em !important;
+}
+
 .chat_container .wrap1{
     margin-right: 10em;
 }
