@@ -71,27 +71,33 @@ export default function Dashboard() {
             html: `
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
-                <input type="text" class="form-control p-2" placeholder="Username">
+                <input type="text" class="text-muted" placeholder="Username">
+                <span class="input-group-text"><i class="fa-solid fa-pen"></i></span>
             </div>
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="fa-solid fa-inbox"></i></span>
-                <input type="text" class="form-control p-2" placeholder="Email address">
+                <input type="text" class="text-muted" placeholder="Email address">
+                <span class="input-group-text"><i class="fa-solid fa-pen"></i></span>
             </div>
             <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-location"></i></span>
+                <input type="text" class="text-muted" placeholder="Address">
                 <span class="input-group-text"><i class="fa-solid fa-pen"></i></span>
-                <input type="text" class="form-control p-2" placeholder="Address">
             </div>
             `,
             focusConfirm: true,
+            confirmButtonText: "Save Changes",
+            background: "azure",
             preConfirm: () => {
               return [
                 "yeah"
               ];
             }
-          });
-          if (formValues) {
-            Swal.fire(JSON.stringify(formValues));
-          }
+        });
+        if (formValues) {
+        Swal.fire(JSON.stringify(formValues));
+        }
+
     }
 
     const logOut = () => {

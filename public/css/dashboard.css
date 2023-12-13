@@ -391,6 +391,37 @@
     outline: none;
 }
 
+.swal2-html-container input{
+    background-color: azure !important;
+    padding: 1em !important;    
+    border: 1px solid rgb(220, 218, 218);
+    width: 80%;
+    outline: none;
+}
+
+.swal2-actions button{
+    background-color: var(--primary) !important;
+    color: var(---secondary) !important;
+    outline: none !important;
+    border: none !important;
+    box-shadow: .1em .1em 1em #4eac6d!important;
+}
+
+.swal2-html-container .input-group{
+    flex-wrap: nowrap;
+    font-size: .8em;
+}
+
+.swal2-html-container input::placeholder{
+    color: rgb(175, 173, 173);
+}
+
+.swal2-html-container .input-group-text{
+    background-color: var(--primary) !important;
+    color: var(---secondary) !important;
+    border: 1px solid transparent !important;
+}
+
 @media screen and (max-width: 700px){
     .navigation {
         display: none;
