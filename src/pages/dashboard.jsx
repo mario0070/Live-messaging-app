@@ -65,9 +65,58 @@ export default function Dashboard() {
         setTab(name)
     }
 
+    const editUser = async () => {
+        const { value: formValues } = await Swal.fire({
+            title: "Personal Information",
+            html: `
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa-solid fa-user"></i></span>
+                <input type="text" class="form-control p-2" placeholder="Username">
+            </div>
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="fa-solid fa-inbox"></i></span>
+                <input type="text" class="form-control p-2" placeholder="Email address">
+            </div>
+            <div class="input-group">
+                <span class="input-group-text"><i class="fa-solid fa-pen"></i></span>
+                <input type="text" class="form-control p-2" placeholder="Address">
+            </div>
+            `,
+            focusConfirm: true,
+            preConfirm: () => {
+              return [
+                "yeah"
+              ];
+            }
+          });
+          if (formValues) {
+            Swal.fire(JSON.stringify(formValues));
+          }
+    }
+
+    const logOut = () => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "Your account will be log out",
+            icon: "question",
+            showCancelButton: true,
+            confirmButtonColor: "#4eac6d",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, Logout !!",
+            background: "azure",
+          }).then((result) => {
+            if (result.isConfirmed) {
+              Swal.fire({
+                title: "Logged Out!",
+                text: "Your account has been logged out.",
+                icon: "success"
+              });
+            }
+          });
+    }
+
     return (
         <div className='dashboard fade_load'>
-
             <div className="all_contents">
                 <div className="d-flex">
 
@@ -78,7 +127,7 @@ export default function Dashboard() {
                         <a data-bs-toggle="tab" title='profile' href='#profile' onClick={() => switchTab("profile")}><i className="fa-solid fa-user"></i></a>
                         <a data-bs-toggle="tab" title='contact' href='#contact' onClick={() => switchTab("contact")}><i className="fa-solid fa-address-book"></i></a>
                         <a data-bs-toggle="tab" title='calls' href='#calls' onClick={() => switchTab("calls")}><i className="fa-solid fa-phone"></i></a>
-                        <p><a title='logout' href="#logout"><i className="fa-solid fa-right-from-bracket"></i></a></p>
+                        <p onClick={logOut}><a title='logout' href="#logout"><i className="fa-solid fa-right-from-bracket"></i></a></p>
                     </div>
 
                     <div className="users">
@@ -241,7 +290,7 @@ export default function Dashboard() {
                                                                 <p className="fw-semibold">Ganiu jamiu</p>
                                                             </div>
                                                             <div className="edit">
-                                                                <p className="mb-0 btn"><i className="fa-solid text-white fa-pen"></i></p>
+                                                                <p onClick={editUser} className="mb-0 btn"><i className="fa-solid text-white fa-pen"></i></p>
                                                             </div>
                                                         </div>
 
