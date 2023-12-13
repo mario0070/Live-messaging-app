@@ -431,6 +431,22 @@
         width: 70%;
     }
 
+    .dashboard .hamburger{
+        display: inline !important;
+        color: grey;
+        font-size: 2em;
+        transform: translateY(-15px);
+    }
+
+    .dashboard .hamburger:hover{
+        cursor: pointer;
+        color: var(--primary);
+    }
+
+    .dashboard .addChat{
+        display: none;
+    }
+
     .dashboard .users{
         width: 30%;
         padding: 1em 0em;
@@ -480,13 +496,13 @@
 
 @media screen and (min-width: 390px){
     .dashboard .chat_container .msg_body{
-        height: 84vh;
+        height: 82vh;
     }
 }
 
 @media screen and (min-width: 412px){
     .dashboard .chat_container .msg_body{
-        height: 85vh;
+        height: 82vh;
     }
 }
 

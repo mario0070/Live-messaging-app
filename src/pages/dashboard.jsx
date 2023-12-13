@@ -150,7 +150,8 @@ export default function Dashboard() {
                             <div className="head">
                                     <div className="d-flex">
                                         <h2 onClick={slideNav} className="fw-bold">Chats</h2>
-                                        <p className="mb-0"><i className="fa-solid fa-plus"></i></p>
+                                        <p className="mb-0 d-none hamburger"><i class="fa-solid fa-bars"></i></p>
+                                        <p className="mb-0 addChat"><i className="fa-solid fa-plus"></i></p>
                                     </div>
                             </div>
 
