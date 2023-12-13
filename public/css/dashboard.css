@@ -29,6 +29,12 @@
     padding-bottom: 6em;
 }
 
+.dashboard .users .flow .favourites .cont{
+    border-bottom: 1px solid rgb(218, 218, 218);
+    padding-bottom: .5em;
+}
+
+
 .dashboard .users .flow .total_msg{
     background-color: rgba(174, 173, 173, 0.233);
     padding: .4em;
@@ -219,6 +225,10 @@
     width: fit-content;
 }
 
+.chat_container .sentMsg .myMsg p{
+    white-space-collapse:break-spaces;
+}
+
 .chat_container .wrap1{
     margin-right: 10em;
 }
@@ -388,6 +398,7 @@
 
     .dashboard .users{
         width: 30%;
+        padding: 1em 0em;
     }
 }
 
@@ -397,6 +408,6 @@
     }
 
     .dashboard .users{
-        width: 100%;
+        width: 90%;
     }
 }

@@ -10,6 +10,17 @@ export default function Dashboard() {
     const [tab, setTab] = useState("chat")
     const msg = useRef("")
 
+    let newDate = new Date()
+    let hrs = newDate.getHours();
+    let fulltime = newDate.getHours();
+    let mins = newDate.getMinutes();
+    if(hrs > 12){
+        hrs -= 12
+    }
+    if(mins <= 9){
+        mins = "0" + mins
+    }
+
     useEffect(() => {
         var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
         tooltipTriggerList.map(function (tooltipTriggerEl) {
@@ -28,7 +39,7 @@ export default function Dashboard() {
                 <p class="mb-0 p-2">${msg.current.value}</p>
             </div>
           </div>
-          <p class='time text-end mx-3'>10:16 am</p>
+          <p class='time text-end mx-3'>${hrs}:${fulltime >= 12  ? mins +" pm" : mins + " am"}</p>
         </div>`)
         $(".msg_body").scrollTop($(".msg_body").height()*200);
         msg.current.value = ""
@@ -43,7 +54,7 @@ export default function Dashboard() {
                     <div class="msgBodys mb-0 mt-0">
                         <p class='mb-0 p-2'>Hello baddo, we are not available at the moment, please try again later !!</p>
                     </div>
-                    <p class='time text-start mx-3'>10:16 am</p>
+                    <p class='time text-start mx-3'>${hrs}:${fulltime >= 12  ? mins +" pm" : mins + " am"}</p>
                 </div>
             </div> `)
             $(".msg_body").scrollTop($(".msg_body").height()*200);
@@ -82,80 +93,80 @@ export default function Dashboard() {
                             </div>
 
                             <div className="flow">
-                                    <div className="favourites">
-                                        <p className="text-muted fw-bold mb-2">FAVOURITES</p>
-                                            <div className="d-flex">
-                                                <p className="mb-0 name d-flex">
-                                                    <p className="user_icon mb-0 text-center pt-1">JM</p>
-                                                    <p className="mb-0 mx-2 mt-1">jamiu</p>
-                                                </p>
-                                                <p className="mb-0 total_msg">1208</p>
-                                            </div>
-                                            <div className="d-flex">
-                                                <p className="mb-0 name d-flex">
-                                                    <p className="user_icon mb-0 text-center pt-1">JM</p>
-                                                    <p className="mb-0 mx-2 mt-1">jamiu</p>
-                                                </p>
-                                                <p className="mb-0 total_msg">18</p>
-                                            </div>
-                                            <div className="d-flex">
-                                                <p className="mb-0 name d-flex">
-                                                    <p className="user_icon mb-0 text-center pt-1">JM</p>
-                                                    <p className="mb-0 mx-2 mt-1">jamiu</p>
-                                                </p>
-                                                <p className="mb-0 total_msg">18</p>
-                                            </div>
-                                            <div className="d-flex">
-                                                <p className="mb-0 name d-flex">
-                                                    <p className="user_icon mb-0 text-center pt-1">JM</p>
-                                                    <p className="mb-0 mx-2 mt-1">jamiu</p>
-                                                </p>
-                                                <p className="mb-0 total_msg">18</p>
-                                            </div>
-                                            <div className="d-flex">
-                                                <p className="mb-0 name d-flex">
-                                                    <p className="user_icon mb-0 text-center pt-1">JM</p>
-                                                    <p className="mb-0 mx-2 mt-1">jamiu</p>
-                                                </p>
-                                                <p className="mb-0 total_msg">18</p>
-                                            </div>
-                                    </div>
-                                    
-                                    <div className="favourites">
-                                        <p className="text-muted fw-bold mb-2">DIRECT MESSAGES</p>
-                                        <div className="d-flex">
+                                <div className="favourites">
+                                    <p className="text-muted fw-bold mb-2">FAVOURITES</p>
+                                        <div className="d-flex cont">
                                             <p className="mb-0 name d-flex">
                                                 <p className="user_icon mb-0 text-center pt-1">JM</p>
                                                 <p className="mb-0 mx-2 mt-1">jamiu</p>
                                             </p>
-                                            <p className="mb-0 total_msg">34</p>
+                                            <p className="mb-0 total_msg">1208</p>
                                         </div>
-                                        <div className="d-flex">
+                                        <div className="d-flex cont">
                                             <p className="mb-0 name d-flex">
                                                 <p className="user_icon mb-0 text-center pt-1">JM</p>
                                                 <p className="mb-0 mx-2 mt-1">jamiu</p>
                                             </p>
-                                            <p className="mb-0 total_msg">72</p>
+                                            <p className="mb-0 total_msg">18</p>
                                         </div>
+                                        <div className="d-flex cont">
+                                            <p className="mb-0 name d-flex">
+                                                <p className="user_icon mb-0 text-center pt-1">JM</p>
+                                                <p className="mb-0 mx-2 mt-1">jamiu</p>
+                                            </p>
+                                            <p className="mb-0 total_msg">18</p>
+                                        </div>
+                                        <div className="d-flex cont">
+                                            <p className="mb-0 name d-flex">
+                                                <p className="user_icon mb-0 text-center pt-1">JM</p>
+                                                <p className="mb-0 mx-2 mt-1">jamiu</p>
+                                            </p>
+                                            <p className="mb-0 total_msg">18</p>
+                                        </div>
+                                        <div className="d-flex cont">
+                                            <p className="mb-0 name d-flex">
+                                                <p className="user_icon mb-0 text-center pt-1">JM</p>
+                                                <p className="mb-0 mx-2 mt-1">jamiu</p>
+                                            </p>
+                                            <p className="mb-0 total_msg">18</p>
+                                        </div>
+                                </div>
+                                
+                                <div className="favourites">
+                                    <p className="text-muted fw-bold mb-2">MESSAGE BOT</p>
+                                    <div className="d-flex cont">
+                                        <p className="mb-0 name d-flex">
+                                            <p className="user_icon mb-0 text-center pt-1">JM</p>
+                                            <p className="mb-0 mx-2 mt-1">Computer sc. related</p>
+                                        </p>
+                                        <p className="mb-0 total_msg">34</p>
                                     </div>
+                                    <div className="d-flex cont">
+                                        <p className="mb-0 name d-flex">
+                                            <p className="user_icon mb-0 text-center pt-1">JM</p>
+                                            <p className="mb-0 mx-2 mt-1">Education Bot</p>
+                                        </p>
+                                        <p className="mb-0 total_msg">72</p>
+                                    </div>
+                                </div>
 
-                                    <div className="favourites">
-                                        <p className="text-muted fw-bold mb-2">CHANNELS</p>
-                                        <div className="d-flex">
-                                            <p className="mb-0 name d-flex">
-                                                <p className="fs-5 mb-0">#</p>
-                                                <p className="mb-0 mt-1 mx-2">Group Name</p>
-                                            </p>
-                                            <p className="mb-0 total_msg">18</p>
-                                        </div>
-                                        <div className="d-flex">
-                                            <p className="mb-0 name d-flex">
-                                                <p className="fs-5 mb-0">#</p>
-                                                <p className="mb-0 mt-1 mx-2">Group Name</p>
-                                            </p>
-                                            <p className="mb-0 total_msg">18</p>
-                                        </div>
+                                <div className="favourites">
+                                    <p className="text-muted fw-bold mb-2">CHANNELS</p>
+                                    <div className="d-flex cont">
+                                        <p className="mb-0 name d-flex">
+                                            <p className="fs-5 mb-0">#</p>
+                                            <p className="mb-0 mt-1 mx-2">Group Name</p>
+                                        </p>
+                                        <p className="mb-0 total_msg">18</p>
                                     </div>
+                                    <div className="d-flex cont">
+                                        <p className="mb-0 name d-flex">
+                                            <p className="fs-5 mb-0">#</p>
+                                            <p className="mb-0 mt-1 mx-2">Group Name</p>
+                                        </p>
+                                        <p className="mb-0 total_msg">18</p>
+                                    </div>
+                                </div>
                             </div>
                         </> }
 
@@ -176,18 +187,18 @@ export default function Dashboard() {
                                         <div className="p-3 scroll">
                                             <p className="text-muted">If several languages coalesce, the grammar of the resulting language is more simple.</p>
                                             <div className="d-flex">
-                                                <p className="mb-0">icon</p>
+                                                <p className="mb-0"><i class="fa-solid fa-user"></i></p>
                                                 <p className="mb-0 mx-2">Ganiu jamiu</p>
                                             </div>
 
                                             <div className="d-flex">
-                                                <p className="mb-0">icon</p>
+                                                <p className="mb-0"><i class="fa-solid fa-inbox"></i></p>
                                                 <p className="mb-0 mx-2">ganiujamiu@gmail.com</p>
                                             </div>
 
                                             <div className="d-flex">
-                                                <p className="mb-0">icon</p>
-                                                <p className="mb-0 mx-2">username</p>
+                                                <p className="mb-0"><i class="fa-solid fa-location"></i></p>
+                                                <p className="mb-0 mx-2">Location</p>
                                             </div>
                                         </div>
                                     </div>
@@ -318,8 +329,11 @@ export default function Dashboard() {
                                                    </div>
                                                 </div>
                                                 <div id="collapseThree" class="collapse" data-bs-parent="#accordion">
-                                                    <div class="card-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                                    <div class="card-body collapseThree">
+                                                        <div className="d-flex">
+                                                            <p className="mb-0">Show security notification</p>
+                                                            <p className="mb-0"><i class="fa-solid fa-toggle-off"></i></p>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -340,7 +354,6 @@ export default function Dashboard() {
                                                 </div>
                                                 <div id="collapseFour" class="collapse" data-bs-parent="#accordion">
                                                     <div class="card-body">
-                                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
                                                     </div>
                                                 </div>
                                             </div>
@@ -378,7 +391,10 @@ export default function Dashboard() {
                                 <p className="mb-0 pt-2 fw-bold profile_pic">GJ</p>
                                 <div className="mx-2">
                                     <p className="names fw-bold mb-1">Ganiu jamiu</p>
-                                    <p className="mb-0">Online</p>
+                                    <div className="d-flex">
+                                        <p className="mb-0">Online</p>
+                                        <p className="mb-0 mx-2">{hrs}:{fulltime >= 12  ? mins +" pm" : mins + " am"}</p>
+                                    </div>
                                 </div>
                             </div>
                             <div className="icons d-flex">
