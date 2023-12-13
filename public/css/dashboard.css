@@ -428,9 +428,9 @@
     }
 
     
-    .dashboard .chat_container .msg_body{
+    /* .dashboard .chat_container .msg_body{
         height: 70vh;
-    }
+    } */
 
     .dashboard .chat_container{
         width: 70%;
@@ -460,9 +460,9 @@
 
 @media screen and (max-width: 650px){
     .dashboard .chat_container{
-        width: 0%;
-        overflow: hidden;
-        opacity: 0.0;
+        width: 100%;
+        /* overflow: hidden;
+        opacity: 0.0; */
     }
 
     .chat_container .wrap1{
@@ -474,7 +474,9 @@
     }
 
     .dashboard .users{
-        width: 90%;
+        width: 0%;
+        overflow: hidden;
+        opacity: 0.0;
     }
 
     .chat_container .msgIcon img {
@@ -517,7 +519,7 @@
     }
 } */
 
-.dashboard .hide_user{
+/* .dashboard .hide_user{
     width: 0%;
     overflow: hidden;
     opacity: 0.0;
@@ -527,4 +529,4 @@
     width: 100%;
     display: block;
     opacity: 1.0;
-}
+} */
