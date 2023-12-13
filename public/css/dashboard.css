@@ -427,6 +427,11 @@
         display: none;
     }
 
+    
+    .dashboard .chat_container .msg_body{
+        height: 70vh;
+    }
+
     .dashboard .chat_container{
         width: 70%;
     }
