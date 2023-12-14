@@ -242,12 +242,6 @@
 
 .chat_container .wrap2{
     margin-left: 10em;
-    transform: translateX(500px);
-}
-
-.dashboard .chat_container .wrap2_tog{
-    transform: translateX(0px);
-    transition: .5s;
 }
 
 .chat_container .msgBody div ,.sentMsg .myMsg div{
@@ -472,6 +466,24 @@
 }
 
 @media screen and (max-width: 650px){
+    .chat_container .wrap2{
+        transform: translateX(500px);
+    }
+    
+    .dashboard .chat_container .wrap2_tog{
+        transform: translateX(0px);
+        transition: .5s;
+    }
+
+    .chat_container .wrap1{
+        transform: translateX(-500px);
+    }
+
+    .dashboard .chat_container .wrap1_tog{
+        transform: translateX(0px);
+        transition: .5s !important;
+    }
+
     .dashboard .chat_container{
         width: 0%;
         overflow: hidden;
@@ -507,6 +519,19 @@
 
     .dashboard .chat_container .inputs{
         width: 100%;
+    }
+
+    .dashboard .inputs .btn1{
+        display: none;
+    }
+
+    .dashboard .inputs .btn2{
+        display: inline-block !important;
+        border-radius: 50%;
+    }
+
+    .dashboard .chat_container .inputs textarea {
+        width: 90%;
     }
 }
 

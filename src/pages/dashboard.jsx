@@ -43,6 +43,10 @@ export default function Dashboard() {
         </div>`)
         $(".msg_body").scrollTop($(".msg_body").height()*200);
         msg.current.value = ""
+        var wrap2 = document.querySelectorAll(".wrap2")
+        wrap2.forEach(val => {
+            val.classList.add("wrap2_tog")
+        })
 
         setTimeout(() => {
             $(".msg_body").append(`
@@ -58,6 +62,10 @@ export default function Dashboard() {
                 </div>
             </div> `)
             $(".msg_body").scrollTop($(".msg_body").height()*200);
+            var wrap1 = document.querySelectorAll(".wrap1")
+            wrap1.forEach(val => {
+                val.classList.add("wrap1_tog")
+            })
         },1000)
     }
 
@@ -124,10 +132,17 @@ export default function Dashboard() {
     const slideNav = () => {
         var chat_container = document.querySelector(".chat_container")
         var users = document.querySelector(".users")
-        var wrap2 = document.querySelector(".wrap2")
+        var wrap2 = document.querySelectorAll(".wrap2")
+        var wrap1 = document.querySelectorAll(".wrap1")
         users.classList.toggle("hide_user");
         chat_container.classList.toggle("show_container");
-        wrap2.classList.toggle("wrap2_tog");
+        wrap2.forEach(val => {
+            val.classList.toggle("wrap2_tog")
+        })
+
+        wrap1.forEach(val => {
+            val.classList.toggle("wrap1_tog")
+        })
     }
 
     return (
@@ -506,7 +521,8 @@ export default function Dashboard() {
                         <div className="inputs">
                             <div className="d-flex">
                                 <textarea ref={msg} onChange={e => setMsgInput(e.target.value)} placeholder='Type your message.....'></textarea>
-                                <button onClick={sendMsg} className="btn">send message <i className="fa-solid fa-paper-plane"></i></button>
+                                <button onClick={sendMsg} className="btn btn1">send message <i className="fa-solid fa-paper-plane"></i></button>
+                                <button onClick={sendMsg} className="btn btn2 d-none"><i className="fa-solid fa-paper-plane"></i></button>
                             </div>
                         </div>
 
