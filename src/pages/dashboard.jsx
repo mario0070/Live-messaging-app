@@ -4,12 +4,18 @@ import logo from "/public/img/login_image.png"
 import $ from 'jquery';
 import typing from "/public/img/typing1.gif"
 import api from '../utils/api';
+import { io } from 'socket.io-client';
+import { socket } from '../utils/socket';
 
 export default function Dashboard() {
     const [logoName, setLogoName] = useState("Doot")
     const [msgInput, setMsgInput] = useState("")
     const [tab, setTab] = useState("chat")
     const msg = useRef("")
+
+    useEffect(() => {
+        console.log(socket.id)
+    }, []);
 
     let newDate = new Date()
     let hrs = newDate.getHours();
