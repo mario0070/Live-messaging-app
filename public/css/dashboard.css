@@ -403,11 +403,8 @@
 }
 
 .swal2-actions button{
-    background-color: var(--primary) !important;
-    color: var(---secondary) !important;
     outline: none !important;
     border: none !important;
-    box-shadow: .1em .1em 1em #4eac6d!important;
 }
 
 .swal2-html-container .input-group{
@@ -423,6 +420,24 @@
     background-color: var(--primary) !important;
     color: var(---secondary) !important;
     border: 1px solid transparent !important;
+}
+
+.chat_container .wrap2{
+    transform:translateY(50px);
+}
+
+.dashboard .chat_container .wrap2_tog{
+    transform:translateY(0px);
+    transition: .5s;
+}
+
+.chat_container .wrap1{
+    transform:translateY(50px);
+}
+
+.dashboard .chat_container .wrap1_tog{
+    transform:translateY(0px);
+    transition: .5s !important;
 }
 
 @media screen and (max-width: 700px){
