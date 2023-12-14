@@ -4,7 +4,6 @@ import logo from "/public/img/login_image.png"
 import $ from 'jquery';
 import typing from "/public/img/typing1.gif"
 import api from '../utils/api';
-import { io } from 'socket.io-client';
 import { socket } from '../utils/socket';
 
 export default function Dashboard() {
