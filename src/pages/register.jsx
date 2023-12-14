@@ -16,6 +16,7 @@ export default function Register() {
         </div>
 
         <div className="form">
+            <img src={logo} alt="" className='text-center'/>
             <h2 className='text-center'>Register Account</h2>
             <p className="muted text-center mb-5">Get your free {logoName} account now.</p>
 
@@ -48,8 +49,8 @@ export default function Register() {
                 </div>
 
                 <div className="d-flex even social">
-                    <p className="">facebook</p>
-                    <p className="">facebook</p>
+                    <p className=""><i class="fa-brands fa-google-plus-g text-danger"></i></p>
+                    <p className=""><i class="fa-brands fa-facebook text-info"></i></p>
                 </div>
 
                 <p className="text-center muted mt-4">Already have an account ? <a href="/login">Login</a></p>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import "/public/css/style.css"
 import logo from "/public/img/login_image.png"
+import fav from "/public/img/fav.png"
 
 export default function Login() {
     const [logoName, setLogoName] = useState("Doot")
@@ -17,6 +18,7 @@ export default function Login() {
             </div>
 
             <div className="form">
+                <img src={logo} alt="" className='text-center'/>
                 <h2 className='text-center'>Welcome Back</h2>
                 <p className="muted text-center mb-5">Sign in to continue to {logoName}</p>
 
@@ -49,8 +51,8 @@ export default function Login() {
                     </div>
 
                     <div className="d-flex even social">
-                        <p className="">facebook</p>
-                        <p className="">facebook</p>
+                        <p className=""><i class="fa-brands fa-google-plus-g text-danger"></i></p>
+                        <p className=""><i class="fa-brands fa-facebook text-info"></i></p>
                     </div>
 
                     <p className="text-center muted mt-4">Don't have an account ? <a href="/register">Register</a></p>
