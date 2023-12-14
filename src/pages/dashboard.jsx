@@ -3,6 +3,7 @@ import "/public/css/dashboard.css"
 import logo from "/public/img/login_image.png"
 import $ from 'jquery';
 import typing from "/public/img/typing1.gif"
+import api from '../utils/api';
 
 export default function Dashboard() {
     const [logoName, setLogoName] = useState("Doot")
@@ -144,6 +145,12 @@ export default function Dashboard() {
             val.classList.toggle("wrap1_tog")
         })
     }
+
+    useEffect(() => {
+        api.get("/", {})
+        .then(data => console.log(data))
+        .catch(err => console.log(err))
+    })
 
     return (
         <div className='dashboard fade_load'>
