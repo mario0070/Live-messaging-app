@@ -30,7 +30,7 @@ export default function Dashboard() {
 
     const sendMsg = () => {
         $(".msg_body").append(`
-        <div class="wrap2 unique mt -2">
+        <div class="wrap2 unique mt-2">
         <p class='mb-0 msgIcon text-end mb-0'>
             <img src=${logo} alt="img" width=${30} />
         </p>
@@ -124,8 +124,10 @@ export default function Dashboard() {
     const slideNav = () => {
         var chat_container = document.querySelector(".chat_container")
         var users = document.querySelector(".users")
+        var wrap2 = document.querySelector(".wrap2")
         users.classList.toggle("hide_user");
         chat_container.classList.toggle("show_container");
+        wrap2.classList.toggle("wrap2_tog");
     }
 
     return (

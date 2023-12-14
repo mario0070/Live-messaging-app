@@ -190,13 +190,10 @@
 }
 
 .dashboard .chat_container .msg_body{
-    height: 80vh;
+    height: 85vh;
     overflow: scroll;
     padding: 1em;
     padding-bottom: 4em;
-}
-
-.testing{
 }
 
 .dashboard .chat_container .msg_body .time{
@@ -245,6 +242,12 @@
 
 .chat_container .wrap2{
     margin-left: 10em;
+    transform: translateX(500px);
+}
+
+.dashboard .chat_container .wrap2_tog{
+    transform: translateX(0px);
+    transition: .5s;
 }
 
 .chat_container .msgBody div ,.sentMsg .myMsg div{
@@ -438,9 +441,9 @@
     }
 
     
-    .dashboard .chat_container .msg_body{
+    /* .dashboard .chat_container .msg_body{
         height: 70vh;
-    }
+    } */
 
     .dashboard .chat_container{
         width: 70%;
@@ -506,30 +509,6 @@
         width: 100%;
     }
 }
-
-/* @media screen and (min-width: 375px){
-    .dashboard .chat_container .msg_body{
-        height: 80vh;
-    }
-}
-
-@media screen and (min-width: 390px){
-    .dashboard .chat_container .msg_body{
-        height: 80vh;
-    }
-}
-
-@media screen and (min-width: 412px){
-    .dashboard .chat_container .msg_body{
-        height: 80vh;
-    }
-}
-
-@media screen and (min-width: 1012px){
-    .dashboard .chat_container .msg_body{
-        height: 80vh;
-    }
-} */
 
 .dashboard .hide_user{
     width: 0%;
