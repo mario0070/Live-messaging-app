@@ -15,9 +15,11 @@ export default function Dashboard() {
     const [user, setuser] = useState(cookie.token.data[0])
     const [members, setMembers] = useState([])
     const [tab, setTab] = useState("chat")
+    const [recieverEmail, setRecieverEmail] = useState("")
     const [socketConnection, setSocketConnection] = useState(socket)
-    const msg = useRef("")
     const [deleteCookie, setDeleteCookie, removeCookie] = useCookies(["token"])
+    const [allChat, setAllChat] = useState([])
+    const msg = useRef("")
 
     const alert = (icon,msg) => {
         const Toast = Swal.mixin({
@@ -37,6 +39,7 @@ export default function Dashboard() {
           });
     }
 
+    // socket
     useEffect(() => {
         setSocketConnection(true)
         socket.on("connect",() => {
@@ -47,6 +50,7 @@ export default function Dashboard() {
         })
     },[socket])
 
+    // fetching members
     useEffect(() => {
         api.get("/user", {})
         .then(res => {
@@ -73,6 +77,7 @@ export default function Dashboard() {
         })
     })
 
+    // sending messages
     const sendMsg = () => {
         $(".msg_body").append(`
         <div class="wrap2 unique mt-2">
@@ -87,31 +92,57 @@ export default function Dashboard() {
           <p class='time text-end mx-3'><i class="fa-regular fa-clock"></i> ${hrs}:${fulltime >= 12  ? mins +" pm" : mins + " am"}</p>
         </div>`)
         $(".msg_body").scrollTop($(".msg_body").height()*200);
-        msg.current.value = ""
         var wrap2 = document.querySelectorAll(".wrap2")
         wrap2.forEach(val => {
             val.classList.add("wrap2_tog")
         })
 
-        setTimeout(() => {
-            $(".msg_body").append(`
-            <div class="wrap1 unique pt-4">
-                <div class="">
-                    <p class='mb-0 msgIcon text-start mb-0'>
-                        <img src=${logo} alt="img" class='' width=${30} />
-                    </p>
-                    <div class="msgBodys mb-0 mt-0">
-                        <p class='mb-0 p-2'>Hello baddo, we are not available at the moment, please try again later !!</p>
-                    </div>
-                    <p class='time text-start mx-3'><i class="fa-regular fa-clock"></i> ${hrs}:${fulltime >= 12  ? mins +" pm" : mins + " am"}</p>
-                </div>
-            </div> `)
-            $(".msg_body").scrollTop($(".msg_body").height()*200);
-            var wrap1 = document.querySelectorAll(".wrap1")
-            wrap1.forEach(val => {
-                val.classList.add("wrap1_tog")
-            })
-        },1000)
+        api.post("/chat",{
+            sender : user.email,
+            reciever : recieverEmail,
+            message : msg.current.value
+        })
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => {
+            console.log(err)
+        })
+        msg.current.value = ""
+
+
+        // setTimeout(() => {
+        //     $(".msg_body").append(`
+        //     <div class="wrap1 unique pt-4">
+        //         <div class="">
+        //             <p class='mb-0 msgIcon text-start mb-0'>
+        //                 <img src=${logo} alt="img" class='' width=${30} />
+        //             </p>
+        //             <div class="msgBodys mb-0 mt-0">
+        //                 <p class='mb-0 p-2'>Hello baddo, we are not available at the moment, please try again later !!</p>
+        //             </div>
+        //             <p class='time text-start mx-3'><i class="fa-regular fa-clock"></i> ${hrs}:${fulltime >= 12  ? mins +" pm" : mins + " am"}</p>
+        //         </div>
+        //     </div> `)
+        //     $(".msg_body").scrollTop($(".msg_body").height()*200);
+        //     var wrap1 = document.querySelectorAll(".wrap1")
+        //     wrap1.forEach(val => {
+        //         val.classList.add("wrap1_tog")
+        //     })
+        // },1000)
+    }
+
+    const getEmail = (email) => {
+        setRecieverEmail(email)
+
+        api.get("/chat",{})
+        .then(res => {
+            console.log(res)
+            setAllChat(res.data.data)
+        })
+        .catch(err => {
+            console.log(err)
+        })
     }
 
     const switchTab = (name) => {
@@ -245,10 +276,10 @@ export default function Dashboard() {
                                             }
                                             {members.map((val,key) => {
                                                 return(
-                                                    <div id={key} className="d-flex cont">
+                                                    <div id={key} className="d-flex cont" onClick={() => getEmail(val.email)}>
                                                         <p className="mb-0 name d-flex">
                                                             <p className="user_icon text-uppercase mb-0 text-center pt-1">{val.username[0]}{val.username[1]}</p>
-                                                            <p className="mb-0 mx-2 text-capitalize mt-1">{val.username}</p>
+                                                            <p className="mb-0 mx-2 text-capitalize mt-1">{val.email}</p>
                                                         </p>
                                                         <p className="mb-0 total_msg">1208</p>
                                                     </div>
@@ -514,7 +545,27 @@ export default function Dashboard() {
                             </div>
 
                             <div className="msg_body">
-                                <div className="wrap1 unique pt-4">
+                                {allChat.map((val, key) => {
+                                    if(val.sender == user.email && val.reciever == recieverEmail){
+                                        if(val.sender == user.email){
+                                            return(
+                                                <div className="wrap2 mt-2">
+                                                    <p className='mb-0 msgIcon text-end mb-0'>
+                                                        <img src={logo} alt="img" className='' width={30} />
+                                                    </p>
+                                                    <div className="sentMsg mb-0 mt-0">
+                                                        <div className="myMsg">
+                                                            <p className="mb-0 p-2">{val.message}</p>
+                                                        </div>
+                                                    </div>
+                                                    <p className='time text-end mx-3'><i className="fa-regular fa-clock"></i> 10:16 am</p>
+                                                </div>
+                                            )
+                                        }
+                                    }
+                                })}
+
+                                {/* <div className="wrap1 unique pt-4">
                                     <div className="">
                                         <p className='mb-0 msgIcon text-start mb-0'>
                                             <img src={logo} alt="img" className='' width={30} />
@@ -524,9 +575,9 @@ export default function Dashboard() {
                                         </div>
                                         <p className='time text-start mx-3'><i className="fa-regular fa-clock"></i> 10:16 am</p>
                                     </div>
-                                </div>       
+                                </div>        */}
 
-                                <div className="wrap2 mt-2">
+                                {/* <div className="wrap2 mt-2">
                                     <p className='mb-0 msgIcon text-end mb-0'>
                                         <img src={logo} alt="img" className='' width={30} />
                                     </p>
@@ -536,7 +587,7 @@ export default function Dashboard() {
                                         </div>
                                     </div>
                                     <p className='time text-end mx-3'><i className="fa-regular fa-clock"></i> 10:16 am</p>
-                                </div>
+                                </div> */}
 
                                 {/* <div className="wrap1 ai">
                                     <div className="mx-4 mt-5">
@@ -548,8 +599,8 @@ export default function Dashboard() {
                             <div className="inputs">
                                 <div className="d-flex">
                                     <textarea ref={msg} onChange={e => setMsgInput(e.target.value)} placeholder='Type your message.....'></textarea>
-                                    <button onClick={() => {sendMsg(); test()}} className="btn btn1">send message <i className="fa-solid fa-paper-plane"></i></button>
-                                    <button onClick={() => {sendMsg(); test()}} className="btn btn2 d-none"><i className="fa-solid fa-paper-plane"></i></button>
+                                    <button onClick={() => {sendMsg()}} className="btn btn1">send message <i className="fa-solid fa-paper-plane"></i></button>
+                                    <button onClick={() => {sendMsg()}} className="btn btn2 d-none"><i className="fa-solid fa-paper-plane"></i></button>
                                 </div>
                             </div>
 
