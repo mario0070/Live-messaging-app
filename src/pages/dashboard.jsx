@@ -11,12 +11,12 @@ import { CookiesProvider, useCookies } from "react-cookie";
 export default function Dashboard() {
     const [logoName, setLogoName] = useState("Doot")
     const [msgInput, setMsgInput] = useState("")
-    const [user, setuser] = useState([])
+    const [cookie, setCookie,] = useCookies("")
+    const [user, setuser] = useState(cookie.token.data[0])
     const [members, setMembers] = useState([])
     const [tab, setTab] = useState("chat")
     const [socketConnection, setSocketConnection] = useState(socket)
     const msg = useRef("")
-    const [cookie, setCookie,] = useCookies("")
     const [deleteCookie, setDeleteCookie, removeCookie] = useCookies(["token"])
 
     const alert = (icon,msg) => {
@@ -39,18 +39,22 @@ export default function Dashboard() {
 
     useEffect(() => {
         setSocketConnection(true)
-        setuser(cookie.token.data[0])
-        socket.on("msg",(msg => {
-            console.log(msg)
-        }))
+        socket.on("connect",() => {
+            socket.emit("userAuth", user.username)
+            socket.on("userAuth",(msg) => {
+                console.log(msg + " just come online")
+                alert("success", msg + " just come online")
+            })
+        })
+    },[socket])
 
+    useEffect(() => {
         api.get("/user", {})
         .then(res => {
             setMembers(res.data.data)
         })
         .catch(err => console.log(err))
-
-    },[socket]);
+    },[members]);
 
     let newDate = new Date()
     let hrs = newDate.getHours();
@@ -205,73 +209,74 @@ export default function Dashboard() {
                         </div>
 
                         <div className="users">
-                        {
-                            tab == "chat" &&
-                            <>
-                                <div className="head">
-                                        <div className="d-flex">
-                                            <h2 onClick={slideNav} className="fw-bold">Chats</h2>
-                                            <p className="mb-0 d-none hamburger"><i class="fa-solid fa-bars"></i></p>
-                                            <p className="mb-0 addChat"><i className="fa-solid fa-plus"></i></p>
-                                        </div>
-                                </div>
-
-                                <div className="flow">
-                                    <div className="favourites">
-                                        <p className="text-muted fw-bold mb-2">MESSAGE BOT</p>
-                                        <div className="d-flex cont">
-                                            <p className="mb-0 name d-flex">
-                                                <p className="user_icon mb-0 text-center pt-1">JM</p>
-                                                <p className="mb-0 mx-2 mt-1">Computer sc. related</p>
-                                            </p>
-                                            <p className="mb-0 total_msg">34</p>
-                                        </div>
-                                        <div className="d-flex cont">
-                                            <p className="mb-0 name d-flex">
-                                                <p className="user_icon mb-0 text-center pt-1">JM</p>
-                                                <p className="mb-0 mx-2 mt-1">Education Bot</p>
-                                            </p>
-                                            <p className="mb-0 total_msg">72</p>
-                                        </div>
+                            {
+                                tab == "chat" &&
+                                <>
+                                    <div className="head">
+                                            <div className="d-flex">
+                                                <h2 onClick={slideNav} className="fw-bold">Chats</h2>
+                                                <p className="mb-0 d-none hamburger"><i class="fa-solid fa-bars"></i></p>
+                                                <p className="mb-0 addChat"><i className="fa-solid fa-plus"></i></p>
+                                            </div>
                                     </div>
 
-                                    <div className="favourites">
-                                        <p className="text-muted fw-bold mb-2">ALL MEMBERS</p>
-                                        {members.length <= 0 &&
-                                            <div className="spinner-border text-success text-center spinner-border-sm"></div>
-                                        }
-                                        {members.map((val,key) => {
-                                            return(
-                                                <div id={key} className="d-flex cont">
-                                                    <p className="mb-0 name d-flex">
-                                                        <p className="user_icon text-uppercase mb-0 text-center pt-1">{val.username[0]}{val.username[1]}</p>
-                                                        <p className="mb-0 mx-2 mt-1">{val.username}</p>
-                                                    </p>
-                                                    <p className="mb-0 total_msg">1208</p>
-                                                </div>
-                                            )
-                                        })}
-                                    </div>
+                                    <div className="flow">
+                                        <div className="favourites">
+                                            <p className="text-muted fw-bold mb-2">MESSAGE BOT</p>
+                                            <div className="d-flex cont">
+                                                <p className="mb-0 name d-flex">
+                                                    <p className="user_icon mb-0 text-center pt-1">JM</p>
+                                                    <p className="mb-0 mx-2 mt-1">Computer sc. related</p>
+                                                </p>
+                                                <p className="mb-0 total_msg">34</p>
+                                            </div>
+                                            <div className="d-flex cont">
+                                                <p className="mb-0 name d-flex">
+                                                    <p className="user_icon mb-0 text-center pt-1">JM</p>
+                                                    <p className="mb-0 mx-2 mt-1">Education Bot</p>
+                                                </p>
+                                                <p className="mb-0 total_msg">72</p>
+                                            </div>
+                                        </div>
 
-                                    <div className="favourites">
-                                        <p className="text-muted fw-bold mb-2">CHANNELS</p>
-                                        <div className="d-flex cont">
-                                            <p className="mb-0 name d-flex">
-                                                <p className="fs-5 mb-0">#</p>
-                                                <p className="mb-0 mt-1 mx-2">Group Name</p>
-                                            </p>
-                                            <p className="mb-0 total_msg">18</p>
+                                        <div className="favourites">
+                                            <p className="text-muted fw-bold mb-2">ALL MEMBERS</p>
+                                            {members.length <= 0 &&
+                                                <div className="spinner-border text-success text-center spinner-border-sm"></div>
+                                            }
+                                            {members.map((val,key) => {
+                                                return(
+                                                    <div id={key} className="d-flex cont">
+                                                        <p className="mb-0 name d-flex">
+                                                            <p className="user_icon text-uppercase mb-0 text-center pt-1">{val.username[0]}{val.username[1]}</p>
+                                                            <p className="mb-0 mx-2 text-capitalize mt-1">{val.username}</p>
+                                                        </p>
+                                                        <p className="mb-0 total_msg">1208</p>
+                                                    </div>
+                                                )
+                                            })}
                                         </div>
-                                        <div className="d-flex cont">
-                                            <p className="mb-0 name d-flex">
-                                                <p className="fs-5 mb-0">#</p>
-                                                <p className="mb-0 mt-1 mx-2">Group Name</p>
-                                            </p>
-                                            <p className="mb-0 total_msg">18</p>
+
+                                        <div className="favourites">
+                                            <p className="text-muted fw-bold mb-2">CHANNELS</p>
+                                            <div className="d-flex cont">
+                                                <p className="mb-0 name d-flex">
+                                                    <p className="fs-5 mb-0">#</p>
+                                                    <p className="mb-0 mt-1 mx-2">Group Name</p>
+                                                </p>
+                                                <p className="mb-0 total_msg">18</p>
+                                            </div>
+                                            <div className="d-flex cont">
+                                                <p className="mb-0 name d-flex">
+                                                    <p className="fs-5 mb-0">#</p>
+                                                    <p className="mb-0 mt-1 mx-2">Group Name</p>
+                                                </p>
+                                                <p className="mb-0 total_msg">18</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            </> }
+                                </> 
+                            }
 
                             {
                                 tab == "profile" &&
