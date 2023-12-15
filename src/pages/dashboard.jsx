@@ -15,7 +15,8 @@ export default function Dashboard() {
     const [tab, setTab] = useState("chat")
     const [socketConnection, setSocketConnection] = useState(socket)
     const msg = useRef("")
-    const [cookie, setCookie] = useCookies("")
+    const [cookie, setCookie,] = useCookies("")
+    const [deleteCookie, setDeleteCookie, removeCookie] = useCookies(["token"])
 
     const alert = (icon,msg) => {
         const Toast = Swal.mixin({
@@ -42,10 +43,6 @@ export default function Dashboard() {
             console.log(msg)
         }))
     },[socket]);
-
-    const test = () => {
-        socket.emit("msg", "messages")
-    }
 
     let newDate = new Date()
     let hrs = newDate.getHours();
@@ -157,11 +154,12 @@ export default function Dashboard() {
             background: "azure",
           }).then((result) => {
             if (result.isConfirmed) {
-              Swal.fire({
-                title: "Logged Out!",
-                text: "Your account has been logged out.",
-                icon: "success"
-              });
+                removeCookie(["token"])
+                Swal.fire({
+                    title: "Logged Out!",
+                    text: "Your account has been logged out.",
+                    icon: "success"
+                });
             }
           });
     }
@@ -181,12 +179,6 @@ export default function Dashboard() {
             val.classList.toggle("wrap1_tog")
         })
     }
-
-    useEffect(() => {
-        api.get("/", {})
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
-    },[])
 
     if(cookie.token){
         return (
