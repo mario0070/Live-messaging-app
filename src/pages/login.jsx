@@ -2,11 +2,13 @@ import React, { useEffect, useRef, useState } from 'react'
 import "/public/css/style.css"
 import logo from "/public/img/login_image.png"
 import api from '../utils/api'
+import { CookiesProvider, useCookies } from "react-cookie";
 
 export default function Login() {
     const [logoName, setLogoName] = useState("Doot") 
     const email = useRef("")
     const password = useRef("")
+    const [cookie, setCookie] = useCookies()
 
     const alert = (icon,msg) => {
         const Toast = Swal.mixin({
@@ -35,7 +37,8 @@ export default function Login() {
             password : password.current.value,
         })
         .then(res => {
-            // console.log(res)
+            console.log(res)
+            setCookie("token", res.data, {maxAge : 3600 * 12 })
             btn.innerHTML = "Log In"
             alert("success", "Login was successful")
             setTimeout(() => {

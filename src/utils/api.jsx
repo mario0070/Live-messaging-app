@@ -2,8 +2,8 @@ import React from 'react'
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-if(Cookies.get('user_token')){
-    var data = JSON.parse(Cookies.get('user_token'))
+if(Cookies.get('token')){
+    var data = JSON.parse(Cookies.get('token'))
     var API =  axios.create({
         baseURL: 'https://live-messaging-api.onrender.com',
         headers: {

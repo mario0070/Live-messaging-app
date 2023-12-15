@@ -1,12 +1,14 @@
 import React, { useRef, useState } from 'react'
 import logo from "/public/img/login_image.png"
 import api from '../utils/api'
+import { CookiesProvider, useCookies } from "react-cookie";
 
 export default function Register() {
     const [logoName, setLogoName] = useState("Doot")
     const email = useRef("")
     const username = useRef("")
     const password = useRef("")
+    const [cookie, setCookie] = useCookies()
 
     const alert = (icon,msg) => {
         const Toast = Swal.mixin({
@@ -39,6 +41,7 @@ export default function Register() {
             // console.log(res)
             btn.innerHTML = "Register"
             alert("success", "Registration was successful")
+            setCookie("token", res.data, {maxAge : 3600 * 12 })
             setTimeout(() => {
                 window.location.href = "/dashboard"
             },1000)
