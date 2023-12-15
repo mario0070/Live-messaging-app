@@ -12,7 +12,7 @@ export default function Dashboard() {
     const [logoName, setLogoName] = useState("Doot")
     const [msgInput, setMsgInput] = useState("")
     const [tab, setTab] = useState("chat")
-    const [socketConnection, setSocketConnection] = useState(socket.connected)
+    const [socketConnection, setSocketConnection] = useState(socket)
     const msg = useRef("")
     const [cookie, setCookie] = useCookies("")
 
@@ -36,18 +36,14 @@ export default function Dashboard() {
 
     useEffect(() => {
         setSocketConnection(true)
-        if(socketConnection){
-            socket.on("userLogin", (msg) => {
-                console.log(msg, socket.id)
-                alert("",msg)
-            })
-            
-            socket.emit("userLogin", "username")
-            console.log("connected")
-        }else{
-            console.log("disconnected")
-        }
-    }, [socketConnection, socket]);
+        socket.on("msg",(msg => {
+            console.log(msg)
+        }))
+    },[socket]);
+
+    const test = () => {
+        socket.emit("msg", "messages")
+    }
 
     let newDate = new Date()
     let hrs = newDate.getHours();
@@ -188,7 +184,7 @@ export default function Dashboard() {
         api.get("/", {})
         .then(data => console.log(data))
         .catch(err => console.log(err))
-    })
+    },[])
 
     return (
         <div className='dashboard fade_load'>
@@ -566,8 +562,8 @@ export default function Dashboard() {
                         <div className="inputs">
                             <div className="d-flex">
                                 <textarea ref={msg} onChange={e => setMsgInput(e.target.value)} placeholder='Type your message.....'></textarea>
-                                <button onClick={sendMsg} className="btn btn1">send message <i className="fa-solid fa-paper-plane"></i></button>
-                                <button onClick={sendMsg} className="btn btn2 d-none"><i className="fa-solid fa-paper-plane"></i></button>
+                                <button onClick={() => {sendMsg(); test()}} className="btn btn1">send message <i className="fa-solid fa-paper-plane"></i></button>
+                                <button onClick={() => {sendMsg(); test()}} className="btn btn2 d-none"><i className="fa-solid fa-paper-plane"></i></button>
                             </div>
                         </div>
 
