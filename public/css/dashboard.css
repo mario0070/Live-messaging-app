@@ -422,7 +422,7 @@
     border: 1px solid transparent !important;
 }
 
-.chat_container .wrap2{
+/* .chat_container .wrap2{
     transform:translateY(50px);
 }
 
@@ -438,7 +438,7 @@
 .dashboard .chat_container .wrap1_tog{
     transform:translateY(0px);
     transition: .5s !important;
-}
+} */
 
 @media screen and (max-width: 700px){
     .dashboard .chat_container .inputs{

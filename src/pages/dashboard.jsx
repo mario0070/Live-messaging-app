@@ -5,12 +5,15 @@ import $ from 'jquery';
 import typing from "/public/img/typing1.gif"
 import api from '../utils/api';
 import { socket } from '../utils/socket';
+import Cookies from 'js-cookie';
+import { CookiesProvider, useCookies } from "react-cookie";
 
 export default function Dashboard() {
     const [logoName, setLogoName] = useState("Doot")
     const [msgInput, setMsgInput] = useState("")
     const [tab, setTab] = useState("chat")
     const msg = useRef("")
+    const [cookie, setCookie] = useCookies("")
 
     useEffect(() => {
         console.log(socket.id)
