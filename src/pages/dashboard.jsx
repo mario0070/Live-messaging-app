@@ -42,8 +42,7 @@ export default function Dashboard() {
         socket.on("connect",() => {
             socket.emit("userAuth", user.username)
             socket.on("userAuth",(msg) => {
-                console.log(msg + " just come online")
-                alert("success", msg + " just come online")
+                alert("info", msg + " just come online")
             })
         })
     },[socket])
