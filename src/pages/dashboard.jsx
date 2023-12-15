@@ -12,6 +12,7 @@ export default function Dashboard() {
     const [logoName, setLogoName] = useState("Doot")
     const [msgInput, setMsgInput] = useState("")
     const [user, setuser] = useState([])
+    const [members, setMembers] = useState([])
     const [tab, setTab] = useState("chat")
     const [socketConnection, setSocketConnection] = useState(socket)
     const msg = useRef("")
@@ -38,10 +39,17 @@ export default function Dashboard() {
 
     useEffect(() => {
         setSocketConnection(true)
-        setuser(cookie.token.data)
+        setuser(cookie.token.data[0])
         socket.on("msg",(msg => {
             console.log(msg)
         }))
+
+        api.get("/user", {})
+        .then(res => {
+            setMembers(res.data.data)
+        })
+        .catch(err => console.log(err))
+
     },[socket]);
 
     let newDate = new Date()
@@ -210,45 +218,6 @@ export default function Dashboard() {
 
                                 <div className="flow">
                                     <div className="favourites">
-                                        <p className="text-muted fw-bold mb-2">FAVOURITES</p>
-                                            <div className="d-flex cont">
-                                                <p className="mb-0 name d-flex">
-                                                    <p className="user_icon mb-0 text-center pt-1">JM</p>
-                                                    <p className="mb-0 mx-2 mt-1">jamiu</p>
-                                                </p>
-                                                <p className="mb-0 total_msg">1208</p>
-                                            </div>
-                                            <div className="d-flex cont">
-                                                <p className="mb-0 name d-flex">
-                                                    <p className="user_icon mb-0 text-center pt-1">JM</p>
-                                                    <p className="mb-0 mx-2 mt-1">jamiu</p>
-                                                </p>
-                                                <p className="mb-0 total_msg">18</p>
-                                            </div>
-                                            <div className="d-flex cont">
-                                                <p className="mb-0 name d-flex">
-                                                    <p className="user_icon mb-0 text-center pt-1">JM</p>
-                                                    <p className="mb-0 mx-2 mt-1">jamiu</p>
-                                                </p>
-                                                <p className="mb-0 total_msg">18</p>
-                                            </div>
-                                            <div className="d-flex cont">
-                                                <p className="mb-0 name d-flex">
-                                                    <p className="user_icon mb-0 text-center pt-1">JM</p>
-                                                    <p className="mb-0 mx-2 mt-1">jamiu</p>
-                                                </p>
-                                                <p className="mb-0 total_msg">18</p>
-                                            </div>
-                                            <div className="d-flex cont">
-                                                <p className="mb-0 name d-flex">
-                                                    <p className="user_icon mb-0 text-center pt-1">JM</p>
-                                                    <p className="mb-0 mx-2 mt-1">jamiu</p>
-                                                </p>
-                                                <p className="mb-0 total_msg">18</p>
-                                            </div>
-                                    </div>
-                                    
-                                    <div className="favourites">
                                         <p className="text-muted fw-bold mb-2">MESSAGE BOT</p>
                                         <div className="d-flex cont">
                                             <p className="mb-0 name d-flex">
@@ -264,6 +233,24 @@ export default function Dashboard() {
                                             </p>
                                             <p className="mb-0 total_msg">72</p>
                                         </div>
+                                    </div>
+
+                                    <div className="favourites">
+                                        <p className="text-muted fw-bold mb-2">ALL MEMBERS</p>
+                                        {members.length <= 0 &&
+                                            <div className="spinner-border text-success text-center spinner-border-sm"></div>
+                                        }
+                                        {members.map((val,key) => {
+                                            return(
+                                                <div id={key} className="d-flex cont">
+                                                    <p className="mb-0 name d-flex">
+                                                        <p className="user_icon text-uppercase mb-0 text-center pt-1">{val.username[0]}{val.username[1]}</p>
+                                                        <p className="mb-0 mx-2 mt-1">{val.username}</p>
+                                                    </p>
+                                                    <p className="mb-0 total_msg">1208</p>
+                                                </div>
+                                            )
+                                        })}
                                     </div>
 
                                     <div className="favourites">
