@@ -1,10 +1,54 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import "/public/css/style.css"
 import logo from "/public/img/login_image.png"
-import fav from "/public/img/fav.png"
+import api from '../utils/api'
 
 export default function Login() {
-    const [logoName, setLogoName] = useState("Doot")
+    const [logoName, setLogoName] = useState("Doot") 
+    const email = useRef("")
+    const password = useRef("")
+
+    const alert = (icon,msg) => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+            }
+        });
+        Toast.fire({
+            icon: icon,
+            title: msg
+        });
+    }
+
+    const login = (e) => {
+        var btn = document.getElementById("login")
+        btn.innerHTML = `Processing <div class="spinner-border spinner-border-sm text-white"></div>`
+        e.preventDefault()
+        api.post("/user/login", {
+            email : email.current.value,
+            password : password.current.value,
+        })
+        .then(res => {
+            // console.log(res)
+            btn.innerHTML = "Log In"
+            alert("success", "Login was successful")
+            setTimeout(() => {
+                window.location.href = "/dashboard"
+            },1000)
+        })
+        .catch(err => {
+            btn.innerHTML = "Log In"
+            alert("error", "Invalid credentials")
+            console.log(err)
+        })
+    }
+
 
     return (
     <div className='login fade_load'>
@@ -22,17 +66,17 @@ export default function Login() {
                 <h2 className='text-center'>Welcome Back</h2>
                 <p className="muted text-center mb-5">Sign in to continue to {logoName}</p>
 
-                <form action="">
+                <form action="" onSubmit={login}>
                     <div className="input">
-                        <label htmlFor="">Username</label>
-                        <input type="text" placeholder='Enter your username' />
+                        <label htmlFor="">Email</label>
+                        <input ref={email} type="email" placeholder='Enter your email' />
                     </div>
 
                     <div className="input">
                         <div className="d-flex forgot">
                             <label htmlFor="">Password</label>
                         </div>
-                        <input type="password" placeholder='Password' />
+                        <input ref={password} type="password" placeholder='Password' />
                     </div>
 
                     <div className="d-flex rem">
@@ -42,7 +86,7 @@ export default function Login() {
                         <a href="/" className='mx-2'>Forgot Password?</a>
                     </div>
 
-                    <button className='btn btn-success'>Log In</button>
+                    <button className='btn btn-success' id='login'>Log In</button>
 
                     <div className="d-flex even with">
                         <div className="line"></div>

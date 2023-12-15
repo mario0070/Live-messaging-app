@@ -36,7 +36,7 @@ export default function Register() {
             username : username.current.value,
         })
         .then(res => {
-            console.log(res)
+            // console.log(res)
             btn.innerHTML = "Register"
             alert("success", "Registration was successful")
             setTimeout(() => {
