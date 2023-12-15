@@ -12,12 +12,42 @@ export default function Dashboard() {
     const [logoName, setLogoName] = useState("Doot")
     const [msgInput, setMsgInput] = useState("")
     const [tab, setTab] = useState("chat")
+    const [socketConnection, setSocketConnection] = useState(socket.connected)
     const msg = useRef("")
     const [cookie, setCookie] = useCookies("")
 
+    const alert = (icon,msg) => {
+        const Toast = Swal.mixin({
+            toast: true,
+            position: "top-end",
+            showConfirmButton: false,
+            timer: 3000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+              toast.onmouseenter = Swal.stopTimer;
+              toast.onmouseleave = Swal.resumeTimer;
+            }
+          });
+          Toast.fire({
+            icon: icon,
+            title: msg
+          });
+    }
+
     useEffect(() => {
-        console.log(socket.id)
-    }, []);
+        setSocketConnection(true)
+        if(socketConnection){
+            socket.on("userLogin", (msg) => {
+                console.log(msg, socket.id)
+                alert("",msg)
+            })
+            
+            socket.emit("userLogin", "username")
+            console.log("connected")
+        }else{
+            console.log("disconnected")
+        }
+    }, [socketConnection, socket]);
 
     let newDate = new Date()
     let hrs = newDate.getHours();
