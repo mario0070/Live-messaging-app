@@ -16,6 +16,7 @@ export default function Dashboard() {
     const [members, setMembers] = useState([])
     const [tab, setTab] = useState("chat")
     const [recieverEmail, setRecieverEmail] = useState("")
+    const [recieverUsername, setRecieverUsername] = useState("")
     const [socketConnection, setSocketConnection] = useState(socket)
     const [deleteCookie, setDeleteCookie, removeCookie] = useCookies(["token"])
     const [allChat, setAllChat] = useState([])
@@ -98,7 +99,7 @@ export default function Dashboard() {
         })
 
         api.post("/chat",{
-            sender : user.email,
+            sender : user._id,
             reciever : recieverEmail,
             message : msg.current.value
         })
@@ -132,8 +133,9 @@ export default function Dashboard() {
         // },1000)
     }
 
-    const getEmail = (email) => {
-        setRecieverEmail(email)
+    const getEmail = (id, username) => {
+        setRecieverEmail(id)
+        setRecieverUsername(username)
 
         api.get("/chat",{})
         .then(res => {
@@ -276,7 +278,7 @@ export default function Dashboard() {
                                             }
                                             {members.map((val,key) => {
                                                 return(
-                                                    <div id={key} className="d-flex cont" onClick={() => getEmail(val.email)}>
+                                                    <div id={key} className="d-flex cont" onClick={() => getEmail(val._id, val.username)}>
                                                         <p className="mb-0 name d-flex">
                                                             <p className="user_icon text-uppercase mb-0 text-center pt-1">{val.username[0]}{val.username[1]}</p>
                                                             <p className="mb-0 mx-2 text-capitalize mt-1">{val.email}</p>
@@ -527,9 +529,9 @@ export default function Dashboard() {
                             <div className="head d-flex">
                                 <div className="username d-flex">
                                     <i className="fa-solid fa-arrow-left d-none" onClick={slideNav}></i>
-                                    <p className="mb-0 pt-2 fw-bold profile_pic">GJ</p>
+                                    <p className="mb-0 pt-2 fw-bold text-uppercase profile_pic">{recieverUsername[0] + recieverUsername[1] || "ST"}</p>
                                     <div className="mx-2">
-                                        <p className="names fw-bold mb-1">Ganiu jamiu</p>
+                                        <p className="names text-capitalize fw-bold mb-1">{recieverUsername || "Start Conversation"}</p>
                                         <div className="d-flex">
                                             <p className="mb-0">Online</p>
                                             <p className="mb-0 mx-2"><i className="fa-regular fa-clock top_clock"></i> {hrs}:{fulltime >= 12  ? mins +" pm" : mins + " am"}</p>
@@ -546,10 +548,10 @@ export default function Dashboard() {
 
                             <div className="msg_body">
                                 {allChat.map((val, key) => {
-                                    if(val.sender == user.email && val.reciever == recieverEmail){
-                                        if(val.sender == user.email){
+                                    if(val.sender.email == user.email && val.reciever._id == recieverEmail){
+                                        if(val.sender.email == user.email){
                                             return(
-                                                <div className="wrap2 mt-2">
+                                                <div id={key} className="wrap2 mt-2">
                                                     <p className='mb-0 msgIcon text-end mb-0'>
                                                         <img src={logo} alt="img" className='' width={30} />
                                                     </p>
@@ -560,6 +562,21 @@ export default function Dashboard() {
                                                     </div>
                                                     <p className='time text-end mx-3'><i className="fa-regular fa-clock"></i> 10:16 am</p>
                                                 </div>
+                                            )
+                                        }
+                                        if(val.reciever._id == recieverEmail) {
+                                            return(
+                                                <div className="wrap1 unique pt-4">
+                                                <div className="">
+                                                    <p className='mb-0 msgIcon text-start mb-0'>
+                                                        <img src={logo} alt="img" className='' width={30} />
+                                                    </p>
+                                                    <div className="msgBodys mb-0 mt-0">
+                                                        <p className='mb-0 p-2'>{val.message}</p>
+                                                    </div>
+                                                    <p className='time text-start mx-3'><i className="fa-regular fa-clock"></i> 10:16 am</p>
+                                                </div>
+                                            </div>   
                                             )
                                         }
                                     }
