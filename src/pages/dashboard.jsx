@@ -12,7 +12,7 @@ export default function Dashboard() {
     const [logoName, setLogoName] = useState("Doot")
     const [msgInput, setMsgInput] = useState("")
     const [cookie, setCookie,] = useCookies("")
-    const [user, setuser] = useState(cookie.token.data[0])
+    const [user, setuser] = useState(cookie.token ? cookie.token.data[0] : "" )
     const [members, setMembers] = useState([])
     const [tab, setTab] = useState("chat")
     const [recieverEmail, setRecieverEmail] = useState("")
@@ -321,8 +321,8 @@ export default function Dashboard() {
                                         <div className="info">
                                             <div className="text-center header">
                                                 <img src={logo} alt="" />
-                                                <p className="fw-bold mb-1">Ganiu Jamiu</p>
-                                                <p className="">Frontent dev</p>
+                                                <p className="fw-bold mb-1">{user.username}</p>
+                                                <p className="">Bio</p>
                                             </div>
                                             <div className="p-3 scroll">
                                                 <p className="text-muted">If several languages coalesce, the grammar of the resulting language is more simple.</p>
