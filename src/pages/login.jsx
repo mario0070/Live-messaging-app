@@ -3,6 +3,7 @@ import "/public/css/style.css"
 import logo from "/public/img/login_image.png"
 import api from '../utils/api'
 import { CookiesProvider, useCookies } from "react-cookie";
+import { redirect } from 'react-router-dom';
 
 export default function Login() {
     const [logoName, setLogoName] = useState("Doot") 
@@ -52,6 +53,15 @@ export default function Login() {
         })
     }
 
+    const googleLogin = () => {
+        api.get("/user/google-login")
+        .then(res => {
+            window.location.href = res.data.url
+            console.log(res)
+        })
+        .catch(err => console.log(err))
+    }
+
 
     return (
     <div className='login fade_load'>
@@ -98,7 +108,7 @@ export default function Login() {
                     </div>
 
                     <div className="d-flex even social">
-                        <p className=""><i class="fa-brands fa-google-plus-g text-danger"></i></p>
+                        <p className="" onClick={googleLogin}><i class="fa-brands fa-google-plus-g text-danger"></i></p>
                         <p className=""><i class="fa-brands fa-facebook text-info"></i></p>
                     </div>
 
