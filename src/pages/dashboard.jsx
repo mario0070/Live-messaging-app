@@ -139,8 +139,18 @@ export default function Dashboard() {
 
         api.get("/chat",{})
         .then(res => {
-            console.log(res)
+            // console.log(id)
+            res.data.data.map(val => {
+                
+                // console.log(val)
+                if(val.sender._id == id && val.sender.email == user.email){
+                    console.log(val)
+                }else{
+                    console.log("not")
+                }
+            })
             setAllChat(res.data.data)
+            
         })
         .catch(err => {
             console.log(err)
@@ -548,7 +558,7 @@ export default function Dashboard() {
 
                             <div className="msg_body">
                                 {allChat.map((val, key) => {
-                                    if(val.sender.email == user.email && val.reciever._id == recieverEmail){
+                                    if(val.sender.email == user.email && val.sender._id == recieverEmail){
                                         if(val.sender.email == user.email){
                                             return(
                                                 <div id={key} className="wrap2 mt-2">
@@ -564,7 +574,7 @@ export default function Dashboard() {
                                                 </div>
                                             )
                                         }
-                                        if(val.reciever._id == recieverEmail) {
+                                        else if(val.sender._id == recieverEmail) {
                                             return(
                                                 <div className="wrap1 unique pt-4">
                                                 <div className="">
