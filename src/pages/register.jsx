@@ -50,7 +50,7 @@ export default function Register() {
             if(err.response.data.message == "user already exist"){
                 alert("warning", "User already exist")
             }else{
-                alert("err", "Something went wrong")
+                alert("error", "Something went wrong")
             }
             btn.innerHTML = "Register"
             console.log(err)

@@ -1,7 +1,12 @@
 import React from 'react'
+import { CookiesProvider, useCookies } from "react-cookie";
 
 export default function Landing() {
-  return (
-    <div>Landing</div>
-  )
+  const [cookie, setCookie,] = useCookies("")
+
+  if(cookie.token){
+    window.location.href = "/dashboard"
+  }else{
+      window.location.href = "/login"
+  }
 }
