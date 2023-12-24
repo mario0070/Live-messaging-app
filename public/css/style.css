@@ -150,6 +150,17 @@ body{
     color: var(--primary);
 }
 
+.login .showpassword{
+    position: absolute;
+    color: grey;
+    transform: translateX(-30px) translateY(13px);
+}
+
+.login .showpassword:hover{
+    cursor: pointer;
+    color: black;
+}
+
 @media screen and (max-width: 950px){
     .login .logo{
         display: none;

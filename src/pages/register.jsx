@@ -57,6 +57,21 @@ export default function Register() {
         })
     }
 
+    const showPassword = () => {
+        var password = document.querySelector(".password")
+        var showpassword = document.querySelector(".showpassword")
+        if(password.type == "password"){
+            password.type = "text"
+            showpassword.innerHTML = `<i class="fa-solid fa-eye"></i>`
+            showpassword.style.color = "green"
+        }else{
+            password.type = "password"
+            showpassword.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`
+            showpassword.style.color = "grey"
+        }
+    }
+
+
     return (
         <div className='login fade_load'>
         <div className="d-flex content">
@@ -88,7 +103,8 @@ export default function Register() {
                         <div className="d-flex forgot">
                             <label htmlFor="">Password</label>
                         </div>
-                        <input ref={password} type="password" placeholder='Password' />
+                        <input ref={password} className='password' type="password" placeholder='Password' />
+                        <span className="showpassword" onClick={showPassword}><i className="fa-solid fa-eye-slash"></i></span>
                     </div>
 
                     <p className="text-center terms mb-4">By registering you agree to the {logoName} <span>Terms of Use</span></p>

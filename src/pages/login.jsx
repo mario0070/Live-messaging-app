@@ -62,6 +62,20 @@ export default function Login() {
         .catch(err => console.log(err))
     }
 
+    const showPassword = () => {
+        var password = document.querySelector(".password")
+        var showpassword = document.querySelector(".showpassword")
+        if(password.type == "password"){
+            password.type = "text"
+            showpassword.innerHTML = `<i class="fa-solid fa-eye"></i>`
+            showpassword.style.color = "green"
+        }else{
+            password.type = "password"
+            showpassword.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`
+            showpassword.style.color = "grey"
+        }
+    }
+
 
     return (
     <div className='login fade_load'>
@@ -89,8 +103,13 @@ export default function Login() {
                         <div className="d-flex forgot">
                             <label htmlFor="">Password</label>
                         </div>
-                        <input ref={password} type="password" placeholder='Password' />
+                        <div className="">
+                            <input ref={password} className='password' type="password" placeholder='Password' />
+                            <span className="showpassword" onClick={showPassword}><i className="fa-solid fa-eye-slash"></i></span>
+                        </div>
                     </div>
+
+                    
 
                     <div className="d-flex rem">
                         <input type="checkbox" name="" id="" />
